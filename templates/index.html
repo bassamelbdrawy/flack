@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    chat
+{% endblock %}
+
+{% block main %}
+<body>
+<div class="container">
+<div class="messaging">
+      <div class="inbox_msg">
+        <div class="inbox_people">
+          <div class="headind_srch">
+            <div class="recent_heading">
+              <h4 id ="welcome">{{ user }}</h4>
+              <h4 id ="welcome1">general</h4>
+            </div>
+          </div>
+          <div class="inbox_chat">
+            <br>
+            <form action="/channel" method="post">
+              <div class="form-group">
+                  <input autocomplete="off" autofocus class="form-control" name="addchannel" placeholder="add channel" type="text" id="add" >
+              </div>
+              <button class="btn btn-primary" type="submit" id="addbutton">add</button>
+          </form>
+       
+            <div class="chat_list">
+              <div class="chat_people">
+                <div class="chat_ib">
+                    {% for channel in channels %}
+                  <a href="/{{ channel }} " id="bisi">{{ channel }}</a><br>
+                    {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mesgs">
+          <div class="msg_history">
+            <div class="outgoing_msg">
+              <div id = "ah">
+                {% for i in range(x) %}
+                {% if messages["general"][i]["user"] == user %}
+                  <li class = "received_withd_msg" id = "bisiii"><span>{{ messages["general"][i]["user"] }}</span><p>{{ messages["general"][i]["selection"] }}</p><span class="time_date"> {{ messages["general"][i]["time"] }}</span></li>
+                  {% else %}
+                  <li class = "received_withd_msg" id = "bisii"><span>{{ messages["general"][i]["user"] }}</span><p>{{ messages["general"][i]["selection"] }}</p><span class="time_date"> {{ messages["general"][i]["time"] }}</span></li>
+                  {% endif %}
+                  {% endfor %}
+             </div>
+            </div>
+            <div class="incoming_msg">
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="type_msg">
+            <div class="input_msg_write">
+              <input type="text" id = "textmessage" class="write_msg" placeholder="Type a message" />
+              <button class="msg_send_btn" type="button" id = "messagebutton"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </body>
+    {% endblock %}

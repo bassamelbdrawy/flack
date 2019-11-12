@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    change username
+{% endblock %}
+
+{% block main %}
+    <form action="/change" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="changename" placeholder="enter your new name please" type="text" id = "user">
+        </div>
+        <button class="btn btn-primary" type="submit" id = "login">change</button>
+    </form>
+    <script>
+    document.querySelector('form').onsubmit = function()
+    {
+        if (!document.querySelector('#user').value)
+        {
+            alert('newname is empty');
+            return false;
+        }
+
+    }
+    </script>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <form action="/login" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="enter your name please" type="text" id = "user">
+        </div>
+        <button class="btn btn-primary" type="submit" id = "login">Log In</button>
+    </form>
+    <script>
+    document.querySelector('form').onsubmit = function()
+    {
+        if (!document.querySelector('#user').value)
+        {
+            alert('username is empty');
+            return false;
+        }
+
+    }
+    </script>
+
+{% endblock %}
